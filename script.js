@@ -2,6 +2,37 @@ document.querySelectorAll('#car-type, #car-value, #lease-period, #down-payment')
     element.addEventListener('input', calculateLeasing);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const inputPairs = document.querySelectorAll('.input-pair');
+
+    inputPairs.forEach(pair => {
+        const rangeInput = pair.querySelector('input[type="range"]');
+        const numberInput = pair.querySelector('input[type="number"]');
+
+        // Function to sync the number input value to the range input
+        const syncNumberInputToRange = () => {
+            const value = parseInt(numberInput.value);
+            if (!isNaN(value) && value >= rangeInput.min && value <= rangeInput.max) {
+                rangeInput.value = value;
+            }
+        };
+
+        // Function to sync the range input value to the number input
+        const syncRangeInputToNumber = () => {
+            numberInput.value = rangeInput.value;
+        };
+
+        // Update number input value when range input changes
+        rangeInput.addEventListener('input', syncRangeInputToNumber);
+
+        // Update range input value when number input changes
+        numberInput.addEventListener('input', syncNumberInputToRange);
+
+        // Ensure number input value is always valid when it loses focus
+        numberInput.addEventListener('blur', syncNumberInputToRange);
+    });
+});
+
 function calculateLeasing() {
     const carType = document.getElementById('car-type').value;
     const carValue = parseFloat(document.getElementById('car-value').value);
