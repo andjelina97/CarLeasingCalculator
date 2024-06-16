@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.divLeft, .divRight {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+
+#leasing-form {
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 35px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+table { 
+    width: 100%;
+    border: none; 
+    border-collapse: collapse; 
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+label {
+    margin-bottom: 10px; 
+}
+
+input {
+    margin-bottom: 10px; 
+}
+
+table td { 
+    border-left: 1px solid #000; 
+}
+
+table td:first-child { 
+    border-left: none; 
+}
